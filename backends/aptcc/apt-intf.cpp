@@ -455,7 +455,9 @@ void AptIntf::emitPackages(PkgList &output, PkBitfield filters, PkInfoEnum state
         if (m_cancel)
             break;
 
-        emitPackage(info.ver, state);
+        for (auto ver = info.ver; !ver.end(); ver++) {
+            emitPackage(ver, state);
+        }
     }
 }
 
